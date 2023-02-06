@@ -113,6 +113,9 @@ public class Filter {
         }
     }
 
+    /**
+     * 2.3
+     */
     public static void main(String[] args) {
         List<Apple> inventory = Arrays.asList(
                 new Apple(80, Color.GREEN),
@@ -122,12 +125,27 @@ public class Filter {
         List<Apple> heavyApples = filterApples(inventory, new AppleHeavyWeightPredicate());
         List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
 
+        List<Apple> redApples = filter(inventory, apple -> RED.equals(apple.getColor()));
     }
     public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
             if (p.test(apple)) {
                 result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    public interface Predicate<T> {
+        boolean test(T t);
+    }
+
+    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+        List<T> result = new ArrayList<>();
+        for (T e : list) {
+            if(p.test(e)) {
+                result.add(e);
             }
         }
         return result;
