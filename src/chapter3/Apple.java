@@ -16,6 +16,9 @@ public class Apple {
   public Apple(Integer integer) {
   }
 
+  public Apple(Color color, Integer integer) {
+  }
+
   public int getWeight() {
     return weight;
   }

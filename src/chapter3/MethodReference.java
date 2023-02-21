@@ -1,11 +1,9 @@
 package chapter3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
+import java.util.function.*;
 
 import static java.lang.Integer.compare;
 import static java.util.Comparator.comparing;
@@ -43,7 +41,19 @@ public class MethodReference {
         Apple a2 = c3.apply(110);
 
         List<Integer> weights = Arrays.asList(7, 5, 6, 11);
-        List<Apple> apples = map(w)
+        List<Apple> apples = map(weights, Apple::new);
 
+        BiFunction<Color, Integer, Apple> c4 = Apple::new;
+        Apple tmp1 = c4.apply(Color.GREEN, 100);
+        BiFunction<Color, Integer, Apple> c5 = (color, weight) -> new Apple(color, weight);
+        Apple tmp2 = c5.apply(Color.GREEN, 100);
+
+    }
+    public static List<Apple> map(List<Integer> list, Function<Integer, Apple> f) {
+        List<Apple> result = new ArrayList<>();
+        for (Integer i : list) {
+            result.add(f.apply(i));
+        }
+        return result;
     }
 }
