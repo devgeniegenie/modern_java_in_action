@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Lambda {
 
-    /*
+    /**
      * Predicate
      */
     @FunctionalInterface
@@ -29,7 +29,7 @@ public class Lambda {
     Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
     List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
 
-    /*
+    /**
      * Consumer
      */
     @FunctionalInterface
@@ -42,10 +42,10 @@ public class Lambda {
             c.accept(t);
         }
     }
-    /*forEach(Arrays.asList(1, 2, 3, 4),
+    /**forEach(Arrays.asList(1, 2, 3, 4),
                 (Integer i) -> System.out.println(i));*/
 
-    /*
+    /**
      * Function
      */
     @FunctionalInterface

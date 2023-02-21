@@ -3,6 +3,8 @@ package chapter3;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiPredicate;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import static java.lang.Integer.compare;
@@ -10,7 +12,7 @@ import static java.util.Comparator.comparing;
 
 public class MethodReference {
 
-    /*
+    /**
      * 메서드 참조
      */
     public static void main(String[] args) {
@@ -29,5 +31,19 @@ public class MethodReference {
         BiPredicate<List<String>, String> contains2 = List::contains;
 //        Predicate<String> startWithnumber2 = (String string) -> this::startWithNumber;
         inventory.sort(comparing(Apple::getWeight));
+
+        /**
+         * 생성자 참조
+         */
+        Supplier<Apple> c1 = () -> new Apple();
+        Supplier<Apple> c2 = Apple::new;
+        Apple a1 = c2.get();
+
+        Function<Integer, Apple> c3 = Apple::new;
+        Apple a2 = c3.apply(110);
+
+        List<Integer> weights = Arrays.asList(7, 5, 6, 11);
+        List<Apple> apples = map(w)
+
     }
 }
