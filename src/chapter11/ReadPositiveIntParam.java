@@ -1,8 +1,8 @@
 package chapter11;
 
-import java.util.Optional;
-
 import org.junit.Test;
+
+import java.util.Optional;
 import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
@@ -53,7 +53,7 @@ public class ReadPositiveIntParam {
     private int readDurationWithOptional(Properties props, String name) {
         return Optional.ofNullable(props.getProperty(name))
                 .flatMap(ReadPositiveIntParam::strinigToInt)
-                .filter(i -> i < 0)
+                .filter(i -> i > 0)
                 .orElse(0);
     }
 }
